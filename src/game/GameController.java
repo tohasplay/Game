@@ -63,7 +63,7 @@ public class GameController {
                         p.addS((int) (Math.random() * (10 * (p.c + p.c5))));
                         break;
                     case 1:
-                        p.addS((int) (Math.random() * ((p.c + p.c5) / id++)));
+                        p.addS((int) (Math.random() * (100 / id++)));
                         break;
                 }
             }
