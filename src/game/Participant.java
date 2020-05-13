@@ -34,10 +34,6 @@ public class Participant implements Comparable<Participant> {
         B = 0;
     }
 
-    public double getS() {
-        return s;
-    }
-
     public double getC() {
         return c;
     }

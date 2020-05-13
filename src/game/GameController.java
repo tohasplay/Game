@@ -3,11 +3,9 @@ package game;
 import java.util.Arrays;
 
 public class GameController {
-    final int k;
     Participant[] participants;
 
     public GameController(int k) {
-        this.k = k;
         participants = new Participant[k];
         for (int i = 0; i < participants.length; i++) {
             participants[i] = new Participant();
@@ -31,8 +29,8 @@ public class GameController {
         Participant[] tmp = new Participant[(int) (participants.length * 0.5)];
         Arrays.sort(participants);
 
-        for (int i = 0; i < participants.length; i++) {
-            System.out.println(participants[i].toStringFull());
+        for (Participant participant : participants) {
+            System.out.println(participant.toStringFull());
         }
 
         if (tmp.length >= 0) System.arraycopy(participants, 0, tmp, 0, tmp.length);
@@ -74,7 +72,6 @@ public class GameController {
 
     public void simulateStage0() {
         for (int i = 0; i < 1000; i++) {
-            int id = 1;
             for (Participant p :
                     participants) {
                 p.addS((int) (Math.random() * (10 * (p.c + p.c5))));
