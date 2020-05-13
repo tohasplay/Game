@@ -68,4 +68,14 @@ public class Participant implements Comparable<Participant> {
                 ", c next stage: " + c5 +
                 '}';
     }
+
+    public String toStringFull() {
+        return "Participant{" +
+                "p=" + p +
+                ", s=" + s +
+                ", c=" + c +
+                ", c5=" + c5 +
+                ", m=" + m +
+                '}';
+    }
 }

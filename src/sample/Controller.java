@@ -19,6 +19,7 @@ public class Controller {
 
     private final GameController gameController = new GameController(100);
     private final Player player = new Player();
+    private boolean zeroStage = true;
 
     public void initialize() {
         refresh();
@@ -50,7 +51,11 @@ public class Controller {
     }
 
     public void nextStage() {
-        gameController.simulateStage();
+        if (zeroStage) {
+            gameController.simulateStage0();
+            zeroStage = false;
+        } else
+            gameController.simulateStage();
 
         log.setText(gameController.gameProduce(player));
         refresh();
