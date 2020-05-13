@@ -15,7 +15,7 @@ public class Participant implements Comparable<Participant> {
     }
 
     void initP() {
-        p = (s / B) * 100;
+        p = (s / B) * 100 * 2;
         s = 0;
     }
 
