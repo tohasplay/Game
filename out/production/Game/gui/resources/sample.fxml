@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="gui.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <TextField fx:id="numOfPar" layoutX="422.0" layoutY="43.0" prefHeight="25.0" prefWidth="39.0" />
    <TextField fx:id="toStage" layoutX="471.0" layoutY="22.0" prefHeight="25.0" prefWidth="66.0" />
    <TextField fx:id="firstInStage" layoutX="471.0" layoutY="60.0" prefHeight="25.0" prefWidth="66.0" />
@@ -17,7 +17,7 @@
       <font>
          <Font size="14.0" />
       </font></Text>
-   <Text layoutX="392.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="этап" wrappingWidth="33.0">
+   <Text layoutX="392.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="next" wrappingWidth="33.0">
       <font>
          <Font size="14.0" />
       </font></Text>
@@ -26,13 +26,18 @@
       <font>
          <Font size="14.0" />
       </font></Text>
-   <Button layoutX="546.0" layoutY="22.0" mnemonicParsing="false" onAction="#stakeOnStage" prefHeight="25.0" prefWidth="33.0" />
-   <Button fx:id="first" layoutX="546.0" layoutY="60.0" mnemonicParsing="false" onAction="#stakeFirstInStage" prefHeight="25.0" prefWidth="33.0" />
-   <TextArea fx:id="log" editable="false" layoutX="401.0" layoutY="171.0" prefHeight="204.0" prefWidth="178.0" promptText="log" />
-   <Button layoutX="546.0" layoutY="130.0" mnemonicParsing="false" onAction="#nextStage" prefHeight="25.0" prefWidth="33.0" text="&gt;" />
+   <Button layoutX="546.0" layoutY="22.0" mnemonicParsing="false" onAction="#stakeOnStage" prefHeight="25.0" prefWidth="39.0" text="bet" />
+   <Button fx:id="first" layoutX="546.0" layoutY="60.0" mnemonicParsing="false" onAction="#stakeFirstInStage" prefHeight="25.0" prefWidth="39.0" text="bet" />
+   <TextArea fx:id="log" editable="false" layoutX="401.0" layoutY="184.0" prefHeight="191.0" prefWidth="182.0" promptText="log" />
+   <Button layoutX="549.0" layoutY="135.0" mnemonicParsing="false" onAction="#nextStage" prefHeight="25.0" prefWidth="33.0" text="&gt;" />
    <ScrollPane layoutX="26.0" layoutY="24.0" prefHeight="350.0" prefWidth="361.0">
-      <content>
-         <VBox fx:id="scoreTable" prefHeight="339.0" prefWidth="348.0" />
-      </content>
+      <VBox fx:id="scoreTable" prefHeight="339.0" prefWidth="348.0"/>
    </ScrollPane>
+   <Button layoutX="493.0" layoutY="135.0" mnemonicParsing="false" onAction="#restart" text="restart" />
+   <TextField fx:id="stageNum" editable="false" layoutX="437.0" layoutY="135.0" prefHeight="25.0" prefWidth="50.0" />
+   <Text layoutX="396.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="stage" wrappingWidth="39.0">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Text>
 </AnchorPane>

@@ -5,9 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class Controller {
@@ -20,18 +18,24 @@ public class Controller {
     public TextField acc;
     public Button first;
 
+    int stageN = 1;
+    public TextField stageNum;
+
 
     private GameStage stage = new GameStageTable(100);
-    private final Player player = new Player();
+    private Player player = new Player();
     private boolean zeroStage = true;
 
     public void initialize() {
         refresh();
+        counter();
     }
 
-    public GameStage getStage() {
-        return stage;
-    }
+// --Commented out by Inspection START (5/15/2020 2:30 AM):
+//    public GameStage getStage() {
+//        return stage;
+//    }
+// --Commented out by Inspection STOP (5/15/2020 2:30 AM)
 
     public void setStage(GameStage stage) {
         this.stage = stage;
@@ -84,6 +88,9 @@ public class Controller {
     }
 
     public void nextStage() {
+
+        counter();
+
         if (zeroStage) {
             ((GameStageTable) stage).simulateStage0();
             zeroStage = false;
@@ -95,11 +102,17 @@ public class Controller {
         refresh();
     }
 
+    private void counter() {
+        stageNum.setText(String.valueOf(stageN++));
+    }
+
     private void refresh() {
         acc.setText(String.valueOf(player.getAccount()));
 
         int id = 1;
         if (stage.getClass().getName().equals(GameStageTable.class.getName())) {
+            firstInStage.setDisable(false);
+            first.setDisable(false);
             scoreTable.getChildren().clear();
             for (Participant p :
                     stage.getParticipants()) {
@@ -127,12 +140,22 @@ public class Controller {
                     scoreTable.getChildren().add(text);
                     for (Participant p :
                             group) {
-                        Text text1 = new Text("#" + index++ + " " + p);
+                        Text text1 = new Text("#" + index++ + " " + p.toStringOne());
                         text1.setFill(p.getColor());
                         scoreTable.getChildren().add(text1);
                     }
                 }
             }
         }
+    }
+
+    public void restart() {
+        stageN = 0;
+        counter();
+
+        stage = new GameStageTable(100);
+        player = new Player();
+        zeroStage = true;
+        refresh();
     }
 }

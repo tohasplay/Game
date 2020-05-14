@@ -39,7 +39,7 @@ public class Participant implements Comparable<Participant> {
     }
 
     void initC5() {
-        if (p > 30) {
+        if (p >= 50) {
             c5 = 100 / (50 + m) - p / 250;
         } else {
             c5 = 100 / (50 + m) - p / 100;
