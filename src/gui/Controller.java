@@ -28,7 +28,6 @@ public class Controller {
 
     public void initialize() {
         refresh();
-        counter();
     }
 
 // --Commented out by Inspection START (5/15/2020 2:30 AM):
@@ -89,7 +88,6 @@ public class Controller {
 
     public void nextStage() {
 
-        counter();
 
         if (zeroStage) {
             ((GameStageTable) stage).simulateStage0();
@@ -111,6 +109,7 @@ public class Controller {
 
         int id = 1;
         if (stage.getClass().getName().equals(GameStageTable.class.getName())) {
+            counter();
             firstInStage.setDisable(false);
             first.setDisable(false);
             scoreTable.getChildren().clear();
@@ -127,6 +126,7 @@ public class Controller {
                 text1.setFill(stage.getParticipants()[0].getColor());
                 scoreTable.getChildren().add(text1);
             } else {
+                counter();
                 firstInStage.setText("");
                 firstInStage.setDisable(true);
                 first.setDisable(true);
