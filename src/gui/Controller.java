@@ -80,6 +80,7 @@ public class Controller {
 
         int id = 1;
         if (stage.getClass().getName().equals(GameStageTable.class.getName())) {
+            scoreTable.getChildren().clear();
             for (Participant p :
                     stage.getParticipants()) {
                 Text text = new Text("#" + id++ + " " + p + '\n');
