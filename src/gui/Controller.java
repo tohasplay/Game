@@ -53,7 +53,7 @@ public class Controller {
             player.doStake(
                     ((GameStageOlimp) this.stage).getGroups().get(
                             (Integer.parseInt(numOfPar.getText()) - 1) / 2)
-                            [Integer.parseInt(numOfPar.getText()) - (((Integer.parseInt(numOfPar.getText()) - 1) / 2) + 1)]
+                            [Integer.parseInt(numOfPar.getText()) - (1 + (((Integer.parseInt(numOfPar.getText()) - 1) / 2) * 2))]
                     , Integer.parseInt(toStage.getText()), false
             );
             log.setText("success bet: " + toStage.getText());

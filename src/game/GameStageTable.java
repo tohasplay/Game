@@ -65,7 +65,7 @@ public class GameStageTable extends GameStage {
                         p.addS((int) (Math.random() * (10 * (p.c + p.c5))));
                         break;
                     case 1:
-                        p.addS((int) (Math.random() * (10 / id++)));
+                        p.addS((int) (Math.random() * (25 / id++)));
                         break;
                 }
             }
