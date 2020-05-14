@@ -51,6 +51,11 @@ public class GameStageOlimp extends GameStage {
     }
 
     public void doGroups() {
+
+        for (Participant p : participants){
+            System.out.println(p.toStringFull());
+        }
+
         for (Participant p :
                 participants) {
             p.initPO();
