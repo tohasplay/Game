@@ -5,10 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class Controller {
     @FXML
-    public TextArea scoreTable;
+    public VBox scoreTable;
     public TextArea log;
     public TextField numOfPar;
     public TextField toStage;
@@ -78,7 +82,9 @@ public class Controller {
         if (stage.getClass().getName().equals(GameStageTable.class.getName())) {
             for (Participant p :
                     stage.getParticipants()) {
-                stringBuffer.append('#').append(id++).append(' ').append(p).append('\n');
+                Text text = new Text("#" + id++ + " " + p + '\n');
+                text.setFill (p.getColor());
+                scoreTable.getChildren().add(text);
             }
         } else {
             if (stage.getParticipants().length == 1) {
@@ -100,6 +106,5 @@ public class Controller {
                 }
             }
         }
-        scoreTable.setText(stringBuffer.toString());
     }
 }

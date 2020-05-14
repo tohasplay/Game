@@ -2,8 +2,6 @@ package game;
 
 import gui.Controller;
 
-import java.util.Arrays;
-
 public abstract class GameStage {
     Participant[] participants;
 

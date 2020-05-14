@@ -1,7 +1,7 @@
 package game;
 
-import java.util.Comparator;
-import java.util.function.ToDoubleFunction;
+
+import javafx.scene.paint.Color;
 
 public class Participant implements Comparable<Participant> {
     double p;
@@ -9,7 +9,12 @@ public class Participant implements Comparable<Participant> {
     double c;
     double c5 = -1;
     final double m = 3.0;
+    final Color color = new Color(Math.random() , Math.random() , Math.random() , 1);
     static double B = 0.0;
+
+    public Color getColor() {
+        return color;
+    }
 
     void initC(double k) {
         c = 100 / ((100 / k) + m);

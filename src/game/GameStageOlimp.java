@@ -3,7 +3,6 @@ package game;
 import gui.Controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class GameStageOlimp extends GameStage {
 
@@ -11,7 +10,7 @@ public class GameStageOlimp extends GameStage {
      * @see GameStage#participants
      */
 
-    ArrayList<Participant[]> groups = new ArrayList<>();
+    final ArrayList<Participant[]> groups = new ArrayList<>();
 
     public GameStageOlimp(Participant[] participants) {
         this.participants = participants;
