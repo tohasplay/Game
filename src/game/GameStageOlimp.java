@@ -43,6 +43,9 @@ public class GameStageOlimp extends GameStage {
 
         participants = tmp;
 
+        for (Participant p : participants) {
+            p.clearS();
+        }
 
         groups.clear();
         newGroups();
@@ -52,7 +55,7 @@ public class GameStageOlimp extends GameStage {
 
     public void doGroups() {
 
-        for (Participant p : participants){
+        for (Participant p : participants) {
             System.out.println(p.toStringFull());
         }
 
@@ -69,8 +72,8 @@ public class GameStageOlimp extends GameStage {
             for (int j = 0; j < group.length; j++) {
                 int index = (int) (Math.random() * id--);
                 group[j] = participants[index];
-                participants[index].clearS();
-                Arrays.sort(participants);
+                participants[index] = participants[id];
+                participants[id] = group[j];
             }
         }
     }
@@ -85,10 +88,10 @@ public class GameStageOlimp extends GameStage {
 
     @Override
     public void simulateStage() {
-        for (Participant p :
-                participants) {
-            for (int i = 0; i < 10 * participants.length; i++) {
-                p.addS(Math.random() * 10 * p.c5);
+        for (int i = 0; i < 1000 * participants.length; i++) {
+            for (Participant p :
+                    participants) {
+                p.addS(Math.random() * 100 * p.c5);
             }
         }
     }
