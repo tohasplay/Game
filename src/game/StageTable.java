@@ -2,25 +2,13 @@ package game;
 
 import java.util.Arrays;
 
-public class GameController {
-    Participant[] participants;
+public class StageTable extends Stage {
 
-    public GameController(int k) {
-        participants = new Participant[k];
-        for (int i = 0; i < participants.length; i++) {
-            participants[i] = new Participant();
-        }
-        for (Participant p :
-                participants) {
-            p.initC(participants.length);
-            p.round();
-        }
+    public StageTable(int k) {
+        super(k);
     }
 
-    public Participant[] getParticipants() {
-        return participants;
-    }
-
+    @Override
     public String gameProduce(Player player) {
         if (participants.length == 1) {
             return "Winner already defined";
@@ -53,6 +41,7 @@ public class GameController {
         return player.takeStakes(participants);
     }
 
+    @Override
     public void simulateStage() {
         for (int i = 0; i < 1000; i++) {
             int id = 1;

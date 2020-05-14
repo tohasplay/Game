@@ -1,6 +1,6 @@
-package sample;
+package gui;
 
-import game.GameController;
+import game.StageTable;
 import game.Participant;
 import game.Player;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ public class Controller {
     public TextField acc;
 
 
-    private final GameController gameController = new GameController(100);
+    private final StageTable stageTable = new StageTable(100);
     private final Player player = new Player();
     private boolean zeroStage = true;
 
@@ -36,12 +36,12 @@ public class Controller {
 
     private void stake(TextField stage, boolean winner) {
         try {
-            if (Integer.parseInt(numOfPar.getText()) > gameController.getParticipants().length || Integer.parseInt(numOfPar.getText()) <= 0)
+            if (Integer.parseInt(numOfPar.getText()) > stageTable.getParticipants().length || Integer.parseInt(numOfPar.getText()) <= 0)
                 throw new NumberFormatException();
             if (Integer.parseInt(stage.getText()) <= 0)
                 throw new NumberFormatException();
             player.doStake(
-                    gameController.getParticipants()[Integer.parseInt(numOfPar.getText()) - 1], Integer.parseInt(stage.getText()), winner
+                    stageTable.getParticipants()[Integer.parseInt(numOfPar.getText()) - 1], Integer.parseInt(stage.getText()), winner
             );
             log.setText("success bet: " + stage.getText());
             acc.setText(String.valueOf(player.getAccount()));
@@ -52,12 +52,12 @@ public class Controller {
 
     public void nextStage() {
         if (zeroStage) {
-            gameController.simulateStage0();
+            stageTable.simulateStage0();
             zeroStage = false;
         } else
-            gameController.simulateStage();
+            stageTable.simulateStage();
 
-        log.setText(gameController.gameProduce(player));
+        log.setText(stageTable.gameProduce(player));
         refresh();
     }
 
@@ -66,7 +66,7 @@ public class Controller {
         StringBuilder stringBuffer = new StringBuilder();
         int id = 1;
         for (Participant p :
-                gameController.getParticipants()) {
+                stageTable.getParticipants()) {
             stringBuffer.append('#').append(id++).append(' ').append(p).append('\n');
         }
         scoreTable.setText(stringBuffer.toString());
