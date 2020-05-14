@@ -58,7 +58,7 @@ public class GameStageOlimp extends GameStage {
 
         for (Participant p :
                 participants) {
-            p.initPO();
+            p.initP();
             p.initC5();
             p.round();
         }

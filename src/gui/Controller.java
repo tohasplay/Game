@@ -87,6 +87,7 @@ public class Controller {
                 firstInStage.setText("");
                 firstInStage.setDisable(true);
                 first.setDisable(true);
+                stage.simulateStage();
                 ((GameStageOlimp) stage).doGroups();
                 int index = 1;
                 for (Participant[] group :
