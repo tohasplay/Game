@@ -12,14 +12,18 @@ public class GameStageTable extends GameStage {
 
     @Override
     public String gameProduce(Player player, Controller controller) {
-        if (participants.length == 1) {
-            return "Winner already defined";
-        }else if (participants.length / 2 <= 8){
+        if (participants.length / 2 <= 8) {
             Participant[] tmp = new Participant[8];
             Arrays.sort(participants);
             System.arraycopy(participants, 0, tmp, 0, tmp.length);
             participants = tmp;
             controller.setStage(new GameStageOlimp(participants));
+            for (Participant p :
+                    participants) {
+                p.initC5();
+                p.round();
+            }
+            return player.takeStakes(participants);
         }
 
         Participant[] tmp = new Participant[(int) (participants.length * 0.5)];
@@ -41,6 +45,7 @@ public class GameStageTable extends GameStage {
             p.initP();
             p.initC();
             p.initC5(id-- > level);
+            p.clearS();
             p.round();
         }
 

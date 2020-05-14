@@ -1,5 +1,8 @@
 package game;
 
+import java.util.Comparator;
+import java.util.function.ToDoubleFunction;
+
 public class Participant implements Comparable<Participant> {
     double p;
     double s = 0;
@@ -16,8 +19,9 @@ public class Participant implements Comparable<Participant> {
 
     void initP() {
         p = (s / B) * 100 * 2;
-        s = 0;
     }
+
+
 
     void initC() {
         c = 100 / (p + m);
@@ -28,6 +32,14 @@ public class Participant implements Comparable<Participant> {
             c5 = 100 / (80 + m) - p / 100;
         else
             c5 = 100 / (50 + m) + p / 100;
+    }
+
+    void initC5() {
+        c5 = 100 / (50 + m) - p / 100;
+    }
+
+    void clearS() {
+        s = 0;
     }
 
     void clearB() {
@@ -47,7 +59,7 @@ public class Participant implements Comparable<Participant> {
         B += stake;
     }
 
-    void round(){
+    void round() {
         c = Math.round(c * 100.0) / 100.0;
         c5 = Math.round(c5 * 100.0) / 100.0;
     }
@@ -60,8 +72,14 @@ public class Participant implements Comparable<Participant> {
     @Override
     public String toString() {
         return "Participant{" +
-                ", c win: " + c +
+                " c win: " + c +
                 ", c next stage: " + c5 +
+                '}';
+    }
+
+    public String toStringOne() {
+        return "Participant{" +
+                " c next win: " + c5 +
                 '}';
     }
 
@@ -74,4 +92,6 @@ public class Participant implements Comparable<Participant> {
                 ", m=" + m +
                 '}';
     }
+
+
 }

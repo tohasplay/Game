@@ -73,10 +73,21 @@ public class Controller {
     private void refresh() {
         acc.setText(String.valueOf(player.getAccount()));
         StringBuilder stringBuffer = new StringBuilder();
+
         int id = 1;
-        for (Participant p :
-                stage.getParticipants()) {
-            stringBuffer.append('#').append(id++).append(' ').append(p).append('\n');
+        if (stage.getClass().getName().equals(GameStageTable.class.getName())) {
+            for (Participant p :
+                    stage.getParticipants()) {
+                stringBuffer.append('#').append(id++).append(' ').append(p).append('\n');
+            }
+        } else {
+            if (stage.getParticipants().length == 1) {
+                stringBuffer.append('#').append(1).append(' ').append("winner").append('\n');
+            } else
+                for (Participant p :
+                        stage.getParticipants()) {
+                    stringBuffer.append('#').append(id++).append(' ').append(p.toStringOne()).append('\n');
+                }
         }
         scoreTable.setText(stringBuffer.toString());
     }
