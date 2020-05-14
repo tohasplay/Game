@@ -82,7 +82,7 @@ public class Controller {
             }
         } else {
             if (stage.getParticipants().length == 1) {
-                stringBuffer.append('#').append(1).append(' ').append("winner").append('\n');
+                stringBuffer.append("#1").append(' ').append("winner").append('\n');
             } else {
                 firstInStage.setText("");
                 firstInStage.setDisable(true);

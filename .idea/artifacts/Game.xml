@@ -3,11 +3,22 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Game</output-path>
     <properties id="javafx-properties">
       <options>
+        <option name="alias" value="" />
         <option name="appClass" value="gui.Main" />
+        <option name="convertCss2Bin" value="true" />
         <option name="description" value="" />
+        <option name="enabledSigning" value="true" />
         <option name="htmlPlaceholderId" value="" />
+        <option name="icons">
+          <JavaFxApplicationIcons>
+            <option name="linuxIcon" value="$PROJECT_DIR$/src/gui/resources/people.png" />
+            <option name="macIcon" value="$PROJECT_DIR$/src/gui/resources/people.icns" />
+            <option name="windowsIcon" value="$PROJECT_DIR$/src/gui/resources/people.ico" />
+          </JavaFxApplicationIcons>
+        </option>
+        <option name="keystore" value="" />
         <option name="nativeBundle" value="all" />
-        <option name="title" value="" />
+        <option name="title" value="Game" />
         <option name="vendor" value="" />
         <option name="version" value="" />
       </options>
