@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+   <TextArea fx:id="scoreTable" editable="false" layoutX="24.0" layoutY="22.0" prefHeight="353.0" prefWidth="362.0" />
+   <TextField fx:id="numOfPar" layoutX="422.0" layoutY="43.0" prefHeight="25.0" prefWidth="39.0" />
+   <TextField fx:id="toStage" layoutX="471.0" layoutY="22.0" prefHeight="25.0" prefWidth="66.0" />
+   <TextField fx:id="firstInStage" layoutX="471.0" layoutY="60.0" prefHeight="25.0" prefWidth="66.0" />
+   <Text layoutX="393.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#1">
+      <font>
+         <Font size="14.0" />
+      </font></Text>
+   <Text layoutX="392.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="этап" wrappingWidth="33.0">
+      <font>
+         <Font size="14.0" />
+      </font></Text>
+   <TextField fx:id="acc" editable="false" layoutX="454.0" layoutY="99.0" prefHeight="25.0" prefWidth="83.0" />
+   <Text layoutX="396.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="аккаунт" wrappingWidth="53.0">
+      <font>
+         <Font size="14.0" />
+      </font></Text>
+   <Button layoutX="546.0" layoutY="22.0" mnemonicParsing="false" onAction="#stakeOnStage" prefHeight="25.0" prefWidth="33.0" />
+   <Button layoutX="546.0" layoutY="60.0" mnemonicParsing="false" onAction="#stakeFirstInStage" prefHeight="25.0" prefWidth="33.0" />
+   <TextArea fx:id="log" editable="false" layoutX="401.0" layoutY="171.0" prefHeight="204.0" prefWidth="178.0" promptText="log" />
+   <Button layoutX="546.0" layoutY="130.0" mnemonicParsing="false" onAction="#nextStage" prefHeight="25.0" prefWidth="33.0" text="&gt;" />
+</AnchorPane>
