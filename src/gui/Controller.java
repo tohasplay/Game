@@ -1,9 +1,6 @@
 package gui;
 
-import game.GameStage;
-import game.GameStageTable;
-import game.Participant;
-import game.Player;
+import game.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -63,8 +60,9 @@ public class Controller {
         if (zeroStage) {
             ((GameStageTable) stage).simulateStage0();
             zeroStage = false;
-        } else
+        } else if (stage.getClass().getName().equals(GameStageTable.class.getName())) {
             stage.simulateStage();
+        }
 
         log.setText(stage.gameProduce(player, this));
         refresh();
@@ -83,11 +81,18 @@ public class Controller {
         } else {
             if (stage.getParticipants().length == 1) {
                 stringBuffer.append('#').append(1).append(' ').append("winner").append('\n');
-            } else
-                for (Participant p :
-                        stage.getParticipants()) {
-                    stringBuffer.append('#').append(id++).append(' ').append(p.toStringOne()).append('\n');
+            } else {
+                ((GameStageOlimp) stage).doGroups();
+                int index = 1;
+                for (Participant[] group :
+                        ((GameStageOlimp) stage).getGroups()) {
+                    stringBuffer.append("Group #").append(id++).append("=======").append('\n');
+                    for (Participant p :
+                            group) {
+                        stringBuffer.append('#').append(index++).append(' ').append(p.toStringOne()).append('\n');
+                    }
                 }
+            }
         }
         scoreTable.setText(stringBuffer.toString());
     }

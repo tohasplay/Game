@@ -33,7 +33,24 @@ public class GameStageOlimp extends GameStage {
         if (participants.length == 1) {
             return "Winner already defined";
         }
+        int id;
+        id = 0;
+        Participant[] tmp = new Participant[groups.size()];
+        for (Participant[] group :
+                groups) {
+            tmp[id++] = max(group);
+        }
 
+        participants = tmp;
+
+
+        groups.clear();
+        newGroups();
+
+        return player.takeStakes(participants);
+    }
+
+    public void doGroups() {
         for (Participant p :
                 participants) {
             p.initP();
@@ -51,20 +68,6 @@ public class GameStageOlimp extends GameStage {
                 Arrays.sort(participants);
             }
         }
-        id = 0;
-        Participant[] tmp = new Participant[groups.size()];
-        for (Participant[] group :
-                groups) {
-            tmp[id++] = max(group);
-        }
-
-        participants = tmp;
-
-
-        groups.clear();
-        newGroups();
-
-        return player.takeStakes(participants);
     }
 
     Participant max(Participant[] participants) {
