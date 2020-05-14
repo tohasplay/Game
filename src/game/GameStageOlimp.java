@@ -30,6 +30,7 @@ public class GameStageOlimp extends GameStage {
 
     @Override
     public String gameProduce(Player player, Controller controller) {
+
         if (participants.length == 1) {
             return "Winner already defined";
         }
@@ -55,9 +56,6 @@ public class GameStageOlimp extends GameStage {
 
     public void doGroups() {
 
-        for (Participant p : participants) {
-            System.out.println(p.toStringFull());
-        }
 
         for (Participant p :
                 participants) {
@@ -74,6 +72,14 @@ public class GameStageOlimp extends GameStage {
                 group[j] = participants[index];
                 participants[index] = participants[id];
                 participants[id] = group[j];
+            }
+        }
+        for (Participant[] p :
+                groups) {
+            System.out.println("group======");
+            for (Participant s :
+                    p) {
+                System.out.println(s.toStringFull());
             }
         }
     }

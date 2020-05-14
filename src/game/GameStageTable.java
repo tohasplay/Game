@@ -23,7 +23,6 @@ public class GameStageTable extends GameStage {
                 p.initC5();
                 p.round();
             }
-            ((GameStageOlimp) controller.getStage()).doGroups();
             return player.takeStakes(participants);
         }
 
