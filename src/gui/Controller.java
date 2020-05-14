@@ -2,6 +2,7 @@ package gui;
 
 import game.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -13,6 +14,7 @@ public class Controller {
     public TextField toStage;
     public TextField firstInStage;
     public TextField acc;
+    public Button first;
 
 
     private GameStage stage = new GameStageTable(100);
@@ -82,6 +84,9 @@ public class Controller {
             if (stage.getParticipants().length == 1) {
                 stringBuffer.append('#').append(1).append(' ').append("winner").append('\n');
             } else {
+                firstInStage.setText("");
+                firstInStage.setDisable(true);
+                first.setDisable(true);
                 ((GameStageOlimp) stage).doGroups();
                 int index = 1;
                 for (Participant[] group :

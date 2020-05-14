@@ -26,7 +26,7 @@
          <Font size="14.0" />
       </font></Text>
    <Button layoutX="546.0" layoutY="22.0" mnemonicParsing="false" onAction="#stakeOnStage" prefHeight="25.0" prefWidth="33.0" />
-   <Button layoutX="546.0" layoutY="60.0" mnemonicParsing="false" onAction="#stakeFirstInStage" prefHeight="25.0" prefWidth="33.0" />
+   <Button fx:id="first" layoutX="546.0" layoutY="60.0" mnemonicParsing="false" onAction="#stakeFirstInStage" prefHeight="25.0" prefWidth="33.0" />
    <TextArea fx:id="log" editable="false" layoutX="401.0" layoutY="171.0" prefHeight="204.0" prefWidth="178.0" promptText="log" />
    <Button layoutX="546.0" layoutY="130.0" mnemonicParsing="false" onAction="#nextStage" prefHeight="25.0" prefWidth="33.0" text="&gt;" />
 </AnchorPane>
