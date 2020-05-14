@@ -9,7 +9,7 @@ public class Participant implements Comparable<Participant> {
     double c;
     double c5 = -1;
     final double m = 3.0;
-    final Color color = new Color(Math.random() , Math.random() , Math.random() , 1);
+    final Color color = new Color(Math.random() , Math.random() , Math.random() , 0.89);
     static double B = 0.0;
 
     public Color getColor() {
