@@ -38,8 +38,29 @@ public class Controller {
     }
 
     public void stakeOnStage() {
+        if (stage.getClass().getName().equals(GameStageTable.class.getName()))
+            stake(toStage, false);
+        else
+            stakeO();
+    }
 
-        stake(toStage, false);
+    private void stakeO() {
+        try {
+            if (Integer.parseInt(numOfPar.getText()) > this.stage.getParticipants().length || Integer.parseInt(numOfPar.getText()) <= 0)
+                throw new NumberFormatException();
+            if (Integer.parseInt(toStage.getText()) <= 0)
+                throw new NumberFormatException();
+            player.doStake(
+                    ((GameStageOlimp) this.stage).getGroups().get(
+                            (Integer.parseInt(numOfPar.getText()) - 1) / 2)
+                            [Integer.parseInt(numOfPar.getText()) - (((Integer.parseInt(numOfPar.getText()) - 1) / 2) + 1)]
+                    , Integer.parseInt(toStage.getText()), false
+            );
+            log.setText("success bet: " + toStage.getText());
+            acc.setText(String.valueOf(player.getAccount()));
+        } catch (NumberFormatException e) {
+            log.setText("Number Format Is Incorrect");
+        }
     }
 
     public void stakeFirstInStage() {
@@ -83,14 +104,14 @@ public class Controller {
             for (Participant p :
                     stage.getParticipants()) {
                 Text text = new Text("#" + id++ + " " + p);
-                text.setFill (p.getColor());
+                text.setFill(p.getColor());
                 scoreTable.getChildren().add(text);
             }
         } else {
             if (stage.getParticipants().length == 1) {
                 scoreTable.getChildren().clear();
                 Text text1 = new Text("Winner!");
-                text1.setFill (stage.getParticipants()[0].getColor());
+                text1.setFill(stage.getParticipants()[0].getColor());
                 scoreTable.getChildren().add(text1);
             } else {
                 firstInStage.setText("");
@@ -107,7 +128,7 @@ public class Controller {
                     for (Participant p :
                             group) {
                         Text text1 = new Text("#" + index++ + " " + p);
-                        text1.setFill (p.getColor());
+                        text1.setFill(p.getColor());
                         scoreTable.getChildren().add(text1);
                     }
                 }
