@@ -53,7 +53,7 @@ public class GameStageOlimp extends GameStage {
     public void doGroups() {
         for (Participant p :
                 participants) {
-            p.initP();
+            p.initPO();
             p.initC5();
             p.round();
         }
