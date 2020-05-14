@@ -76,33 +76,39 @@ public class Controller {
 
     private void refresh() {
         acc.setText(String.valueOf(player.getAccount()));
-        StringBuilder stringBuffer = new StringBuilder();
 
         int id = 1;
         if (stage.getClass().getName().equals(GameStageTable.class.getName())) {
             scoreTable.getChildren().clear();
             for (Participant p :
                     stage.getParticipants()) {
-                Text text = new Text("#" + id++ + " " + p + '\n');
+                Text text = new Text("#" + id++ + " " + p);
                 text.setFill (p.getColor());
                 scoreTable.getChildren().add(text);
             }
         } else {
             if (stage.getParticipants().length == 1) {
-                stringBuffer.append("#1").append(' ').append("winner").append('\n');
+                scoreTable.getChildren().clear();
+                Text text1 = new Text("Winner!");
+                text1.setFill (stage.getParticipants()[0].getColor());
+                scoreTable.getChildren().add(text1);
             } else {
                 firstInStage.setText("");
                 firstInStage.setDisable(true);
                 first.setDisable(true);
+                scoreTable.getChildren().clear();
                 stage.simulateStage();
                 ((GameStageOlimp) stage).doGroups();
                 int index = 1;
                 for (Participant[] group :
                         ((GameStageOlimp) stage).getGroups()) {
-                    stringBuffer.append("Group #").append(id++).append("=======").append('\n');
+                    Text text = new Text("Group #" + id++ + "========");
+                    scoreTable.getChildren().add(text);
                     for (Participant p :
                             group) {
-                        stringBuffer.append('#').append(index++).append(' ').append(p.toStringOne()).append('\n');
+                        Text text1 = new Text("#" + index++ + " " + p);
+                        text1.setFill (p.getColor());
+                        scoreTable.getChildren().add(text1);
                     }
                 }
             }
