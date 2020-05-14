@@ -1,13 +1,15 @@
 package game;
 
+import gui.Controller;
+
 import java.util.Arrays;
 
-abstract class Stage {
+public abstract class GameStage {
     Participant[] participants;
 
-    public Stage(){}
+    public GameStage(){}
 
-    public Stage(int k) {
+    public GameStage(int k) {
         participants = new Participant[k];
         for (int i = 0; i < participants.length; i++) {
             participants[i] = new Participant();
@@ -23,7 +25,7 @@ abstract class Stage {
         return participants;
     }
 
-    public abstract String gameProduce(Player player);
+    public abstract String gameProduce(Player player, Controller controller);
 
     public abstract void simulateStage();
 

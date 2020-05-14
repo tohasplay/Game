@@ -1,17 +1,25 @@
 package game;
 
+import gui.Controller;
+
 import java.util.Arrays;
 
-public class StageTable extends Stage {
+public class GameStageTable extends GameStage {
 
-    public StageTable(int k) {
+    public GameStageTable(int k) {
         super(k);
     }
 
     @Override
-    public String gameProduce(Player player) {
+    public String gameProduce(Player player, Controller controller) {
         if (participants.length == 1) {
             return "Winner already defined";
+        }else if (participants.length / 2 <= 8){
+            Participant[] tmp = new Participant[8];
+            Arrays.sort(participants);
+            System.arraycopy(participants, 0, tmp, 0, tmp.length);
+            participants = tmp;
+            controller.setStage(new GameStageOlimp(participants));
         }
 
         Participant[] tmp = new Participant[(int) (participants.length * 0.5)];
