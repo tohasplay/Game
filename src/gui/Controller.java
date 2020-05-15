@@ -6,7 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Controller {
     @FXML
@@ -115,8 +119,9 @@ public class Controller {
             scoreTable.getChildren().clear();
             for (Participant p :
                     stage.getParticipants()) {
-                Text text = new Text("#" + id++ + " " + p);
-                text.setFill(p.getColor());
+                TextCreator textCreator = new TextCreator(id, p).invoke();
+                id = textCreator.getId();
+                Text text = textCreator.getText();
                 scoreTable.getChildren().add(text);
             }
         } else {
@@ -140,8 +145,9 @@ public class Controller {
                     scoreTable.getChildren().add(text);
                     for (Participant p :
                             group) {
-                        Text text1 = new Text("#" + index++ + " " + p.toStringOne());
-                        text1.setFill(p.getColor());
+                        TextCreator textCreator = new TextCreator(index, p).invoke();
+                        index = textCreator.getId();
+                        Text text1 = textCreator.getText();
                         scoreTable.getChildren().add(text1);
                     }
                 }
@@ -157,5 +163,42 @@ public class Controller {
         player = new Player();
         zeroStage = true;
         refresh();
+    }
+
+    private class TextCreator {
+        private int id;
+        private final Participant p;
+        private Text text;
+
+        public TextCreator(int id, Participant p) {
+            this.id = id;
+            this.p = p;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public Text getText() {
+            return text;
+        }
+
+        public TextCreator invoke() {
+            text = new Text("#" + id++ + " " + p);
+            text.setOnMouseEntered(event -> {
+                System.out.println(event);
+                ((Text) event.getSource()).setFill(Color.BLACK);
+            });
+            text.setOnMouseExited(event -> ((Text) event.getSource()).setFill(p.getColor()));
+            text.setOnMouseClicked(event -> {
+                String pattern = "(\\d+)";
+                Pattern ptrn = Pattern.compile(pattern);
+                Matcher matcher = ptrn.matcher(((Text) event.getSource()).getText());
+                if (matcher.find())
+                    numOfPar.setText(String.valueOf(matcher.group(0)));
+            });
+            text.setFill(p.getColor());
+            return this;
+        }
     }
 }

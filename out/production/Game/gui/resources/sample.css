@@ -22,3 +22,7 @@ Button:armed {
     -fx-background-color: #007bfd;
     -fx-text-fill: aliceblue;
 }
+
+Text:hover {
+
+}
