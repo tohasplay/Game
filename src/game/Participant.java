@@ -27,8 +27,8 @@ public class Participant implements Comparable<Participant> {
     }
 
 
-    void initC() {
-        c = 100 / (p + m);
+    void initC(int id) {
+        c = 100 / (40 + m) + (double) id / 3;
     }
 
     void initC5(boolean higher) {

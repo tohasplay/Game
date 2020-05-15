@@ -43,7 +43,7 @@ public class GameStageTable extends GameStage {
         for (Participant p :
                 participants) {
             p.initP();
-            p.initC();
+            p.initC(participants.length - id);
             p.initC5(id-- > level);
             p.clearS();
             p.round();

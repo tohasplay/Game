@@ -14,7 +14,7 @@ public abstract class GameStage {
         }
         for (Participant p :
                 participants) {
-            p.initC(participants.length);
+            p.initC((double) participants.length);
             p.round();
         }
     }
