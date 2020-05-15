@@ -119,7 +119,7 @@ public class Controller {
             scoreTable.getChildren().clear();
             for (Participant p :
                     stage.getParticipants()) {
-                TextCreator textCreator = new TextCreator(id, p).invoke();
+                TextCreator textCreator = new TextCreator(id, p).invoke(true);
                 id = textCreator.getId();
                 Text text = textCreator.getText();
                 scoreTable.getChildren().add(text);
@@ -145,7 +145,7 @@ public class Controller {
                     scoreTable.getChildren().add(text);
                     for (Participant p :
                             group) {
-                        TextCreator textCreator = new TextCreator(index, p).invoke();
+                        TextCreator textCreator = new TextCreator(index, p).invoke(false);
                         index = textCreator.getId();
                         Text text1 = textCreator.getText();
                         scoreTable.getChildren().add(text1);
@@ -183,12 +183,16 @@ public class Controller {
             return text;
         }
 
-        public TextCreator invoke() {
-            text = new Text("#" + id++ + " " + p);
-            text.setOnMouseEntered(event -> {
-                System.out.println(event);
-                ((Text) event.getSource()).setFill(Color.BLACK);
-            });
+        public TextCreator invoke(boolean full) {
+            if (full)
+                text = new Text("#" + id++ + " " + p);
+            else
+                text = new Text("#" + id++ + " " + p.toStringOne());
+
+                text.setOnMouseEntered(event -> {
+                    System.out.println(event);
+                    ((Text) event.getSource()).setFill(Color.BLACK);
+                });
             text.setOnMouseExited(event -> ((Text) event.getSource()).setFill(p.getColor()));
             text.setOnMouseClicked(event -> {
                 String pattern = "(\\d+)";

@@ -1,11 +1,14 @@
 package game;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+import tools.Staker;
+
 import java.util.HashMap;
 
 public class Player {
     double account = 100;
-    final HashMap<Participant, HashMap<Double, Double>> stake_coefficient = new HashMap<>();
-    final HashMap<Participant, HashMap<Double, Double>> firstPlace = new HashMap<>();
+    final HashMap<Participant, Staker<Double, Double>> stake_coefficient = new HashMap<>();
+    final HashMap<Participant, Staker<Double,Double>> firstPlace = new HashMap<>();
 
     public double getAccount() {
         return account;
@@ -17,11 +20,11 @@ public class Player {
             account -= stake;
             participant.addS(stake);
             if (winner) {
-                firstPlace.computeIfAbsent(participant, k -> new HashMap<>());
+                firstPlace.computeIfAbsent(participant, k -> new Staker<>());
                 firstPlace.get(participant).put(stake, participant.getC());
             }
             else {
-                stake_coefficient.computeIfAbsent(participant, k -> new HashMap<>());
+                stake_coefficient.computeIfAbsent(participant, k -> new Staker<>());
                 stake_coefficient.get(participant).put(stake, participant.getC5());
             }
         }
@@ -48,15 +51,15 @@ public class Player {
             firstPlace.get(p).clear();
         }
 
+        account = (double) Math.round(account * 100) / 100;
+
+
         return stringBuffer.toString();
     }
 
-    private void calcWin(StringBuilder stringBuffer, Participant p, HashMap<Participant, HashMap<Double, Double>> firstPlace) {
+    private void calcWin(StringBuilder stringBuffer, Participant p, HashMap<Participant, Staker<Double, Double>> stakeMap) {
         double stakes = 0;
-        for (Double d :
-                firstPlace.get(p).keySet()) {
-            stakes += d * firstPlace.get(p).get(d);
-        }
+        stakes += stakeMap.get(p).getWin();
         stringBuffer.append("Won: ").append(stakes).append("\n");
         account += stakes;
     }

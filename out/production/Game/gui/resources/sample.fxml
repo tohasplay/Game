@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="gui.Controller">
    <TextField fx:id="numOfPar" layoutX="422.0" layoutY="43.0" prefHeight="25.0" prefWidth="39.0" />
    <TextField fx:id="toStage" layoutX="471.0" layoutY="22.0" prefHeight="25.0" prefWidth="66.0" />
    <TextField fx:id="firstInStage" layoutX="471.0" layoutY="60.0" prefHeight="25.0" prefWidth="66.0" />
@@ -22,7 +22,7 @@
          <Font size="14.0" />
       </font></Text>
    <TextField fx:id="acc" editable="false" layoutX="454.0" layoutY="99.0" prefHeight="25.0" prefWidth="83.0" />
-   <Text layoutX="396.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="аккаунт" wrappingWidth="53.0">
+   <Text layoutX="396.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="account" wrappingWidth="53.0">
       <font>
          <Font size="14.0" />
       </font></Text>
